@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Ludo Game</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #111827;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+h1 {
+    margin: 5px 0 15px;
+}
+
+.game {
+    width: min(95vw, 600px);
+    margin: auto;
+}
+
+.board {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: white;
+    border: 5px solid #222;
+
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+}
+
+/* Homes */
+
+.home {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    border: 4px solid #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.red {
+    background: #ef4444;
+    left: 0;
+    top: 0;
+}
+
+.green {
+    background: #22c55e;
+    right: 0;
+    top: 0;
+}
+
+.blue {
+    background: #3b82f6;
+    left: 0;
+    bottom: 0;
+}
+
+.yellow {
+    background: #facc15;
+    right: 0;
+    bottom: 0;
+}
+
+/* Home circles */
+
+.tokens {
+    width: 65%;
+    height: 65%;
+    background: white;
+    border-radius: 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    gap: 12px;
+    padding: 12px;
+}
+
+.token {
+    border-radius: 50%;
+    border: 3px solid #222;
+    background: #eee;
+}
+
+/* Center */
+
+.center {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    left: 40%;
+    top: 40%;
+
+    background: conic-gradient(
+        #ef4444 0deg 90deg,
+        #22c55e 90deg 180deg,
+        #facc15 180deg 270deg,
+        #3b82f6 270deg 360deg
+    );
+
+    border: 4px solid #222;
+}
+
+/* Controls */
+
+.controls {
+    margin-top: 20px;
+}
+
+#dice {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+button {
+    padding: 13px 30px;
+    border: none;
+    border-radius: 10px;
+    background: #facc15;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#message {
+    margin-top: 12px;
+    font-size: 16px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="game">
+
+<h1>🎲 MY LUDO GAME</h1>
+
+<div class="board">
+
+    <!-- RED HOME -->
+    <div class="home red">
+        <div class="tokens">
+            <div class="token"></div>
+            <div class="token"></div>
+            <div class="token"></div>
+            <div class="token"></div>
+        </div>
+    </div>
+
+    <!-- GREEN HOME -->
+    <div class="home green">
+        <div class="tokens">
+            <div class="token"></div>
+            <div class="token"></div>
+            <div class="token"></div>
+            <div class="token"></div>
+        </div>
+    </div>
+
+    <!-- BLUE HOME -->
+    <div class="home blue">
+        <div class="tokens">
+            <div class="token"></div>
+            <div class="token"></div>
+            <div class="token"></div>
+            <div class="token"></div>
+        </div>
+    </div>
+
+    <!-- YELLOW HOME -->
+    <div class="home yellow">
+        <div class="tokens">
+            <div class="token"></div>
+            <div class="token"></div>
+            <div class="token"></div>
+            <div class="token"></div>
+        </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="center"></div>
+
+</div>
+
+<div class="controls">
+
+    <div id="dice">🎲 -</div>
+
+    <button onclick="rollDice()">
+        ROLL DICE
+    </button>
+
+    <div id="message">
+        Red Player Turn
+    </div>
+
+</div>
+
+</div>
+
+<script>
+
+function rollDice() {
+
+    let number = Math.floor(Math.random() * 6) + 1;
+
+    document.getElementById("dice").innerHTML =
+        "🎲 " + number;
+
+    document.getElementById("message").innerHTML =
+        "You rolled " + number;
+}
+
+</script>
+
+</body>
+</html>
